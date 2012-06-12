@@ -3,7 +3,7 @@ require 'active_model'
 
 class NipValidator < ActiveModel::EachValidator
 
-  def validate_each(record, attribute, value)
+  def validate_each(record, attr_name, value)
     record.errors.add(attr_name, :not_a_nip, filtered_options(value)) unless CommonNumbers::Polish::Nip.new(value).valid?
   end
 
